@@ -3,6 +3,11 @@ package com.example.patterns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.patterns.abstractFactory.buttons.Button;
+import com.example.patterns.abstractFactory.checkboxes.CheckBox;
+import com.example.patterns.abstractFactory.factories.GUIFactory;
+import com.example.patterns.abstractFactory.factories.MacOSFactory;
 import com.example.patterns.builder.BookBuilder;
 import com.example.patterns.builder.Director;
 import com.example.patterns.builder.FeedbackBuilder;
@@ -40,8 +45,17 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d("SINGLETONE", s1.getName());
 //        Log.d("SINGLETONE", s2.getName());
 
-        Dialog dialog = new WindowsDialog();
-        dialog.renderWindow();
+        //Factory Method
+//        Dialog dialog = new WindowsDialog();
+//        dialog.renderWindow();
 
+        //Abstract Factory
+        Button button;
+        CheckBox checkBox;
+        GUIFactory factory = new MacOSFactory();
+        button = factory.createButton();
+        button.paint();
+        checkBox = factory.createCheckBox();
+        checkBox.paint();
     }
 }
